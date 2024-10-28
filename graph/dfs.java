@@ -12,7 +12,7 @@ public class dfs {
          for(int i = 0 ; i<adj.get(curr).size() ; i++){
              int e = adj.get(curr).get(i);
              if(!vis[e]){
-                         dfs(e, vis, adj, ls); 
+                          dfs(e, vis, adj, ls); 
              }
          }
          

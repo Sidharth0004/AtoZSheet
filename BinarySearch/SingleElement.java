@@ -1,5 +1,7 @@
 package BinarySearch;
 // Single Element in a Sorted Array
+// 1,1,2,3,3,4,4,8,8
+
 public class SingleElement {
     class Solution {
         public int singleNonDuplicate(int[] nums) {

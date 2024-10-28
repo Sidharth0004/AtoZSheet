@@ -42,6 +42,7 @@ class Solution {
       int maxlen =0 ;
       int zeros =0;
 
+    //   nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
       while(r<n){
         int num = nums[r];
         if(num==0){

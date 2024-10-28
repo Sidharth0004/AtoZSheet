@@ -1,6 +1,6 @@
 package BinarySearch;
 // 34. Find First and Last Position of Element in Sorted
-
+// [5,7,7,8,8,10]
 public class FirstandLastPos {
     class Solution {
         public int[] searchRange(int[] nums, int target) {

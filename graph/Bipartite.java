@@ -23,7 +23,7 @@ if(color[i]==-1){
         for (int j = 0; j < graph[curr].length; j++) {
                  int e = graph[curr][j] ; // e.dest
                  if (color[e] == -1) {
-                    int nextCol = color[curr] == 0 ? 1 :0;
+                    int nextCol = color[curr] == 0 ? 1 :0;  
                     color[e] = nextCol;
                     q.add(e);
 

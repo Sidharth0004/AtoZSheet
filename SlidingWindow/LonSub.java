@@ -13,7 +13,7 @@ public class LonSub {
         int maxlen =0;
        
        int [] hash = new int[128];
-
+//  "abcabcbb";`
        while(r<n){
           char c = s.charAt(r);
           l =  Math.max(l, hash[c]);
