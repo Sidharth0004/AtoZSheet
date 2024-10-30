@@ -8,9 +8,9 @@ public class NiceSubarray {
             return 0;
         }
         while(r<nums.length){
-            sum += nums[r];
+            sum += nums[r]%2;
             while(sum>goal){
-                if(nums[l]==1){
+                if(nums[l]%2==1){
                     sum--;
                 }
                 l++;
@@ -21,8 +21,7 @@ public class NiceSubarray {
         }
         return cnt;
     }
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        return helpMe(nums,goal)-helpMe(nums,goal-1);
-        
+    public int numberOfSubarrays(int[] nums, int k) {
+        return helpMe(nums,k)-helpMe(nums,k-1);
     }
 }
