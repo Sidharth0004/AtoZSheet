@@ -26,7 +26,7 @@ public class isomorhic {
     
     public static void main(String[] args) {
         String s = "add";
-        String t = "egi";
+        String t = "dda";
 
 
 
