@@ -35,8 +35,8 @@ public class FrogJumpWIthK {
         // code here
         
     int n = arr.length;    
-  int dp [] = new int [n];
-   Arrays.fill(dp, -1);
+    int dp [] = new int [n]; 
+    Arrays.fill(dp, -1); 
   
     int ans =    helper(arr, k ,n-1, dp);
   return ans;

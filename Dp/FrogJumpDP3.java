@@ -16,7 +16,7 @@ return dp[n];
 
 
 int jumpTwo = Integer.MAX_VALUE;
-int jumpOne= helper( arr,n-1 , dp)+ Math.abs(arr[n]-arr[n-1]);
+int jumpOne= helper( arr,n-1 , dp) + Math.abs(arr[n]-arr[n-1]);
 if(n>1){
    jumpTwo= helper( arr,n-2,dp)+ Math.abs(arr[n]-arr[n-2]);
 }
