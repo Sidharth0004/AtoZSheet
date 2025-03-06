@@ -1,9 +1,8 @@
-
-
 import java.util.Arrays;
 
 public class UniquePath {
-     public static int helper(int m , int n , int [][] dp){
+
+   public static int helper(int m , int n , int [][] dp){
         if(m==0 && n==0){
             return 1;
         }
@@ -30,8 +29,6 @@ public class UniquePath {
       for (int[] row : dp)
             Arrays.fill(row, -1);
 
-            helper(m-1 , n-1, dp);  
+       return     helper(m-1 , n-1, dp);  
     }
-
-
 }

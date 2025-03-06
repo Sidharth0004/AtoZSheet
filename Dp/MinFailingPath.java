@@ -1,51 +1,35 @@
-
-
 import java.util.Arrays;
 
 public class MinFailingPath {
-    public int minFallingPathSum(int[][] matrix) {
-        
-        int m = matrix.length;
-        int n = matrix[0].length;
 
-        if(m == 1 || n == 1) return matrix[0][0];
+     int dp[][]; 
 
-        int dp[][] = new int[m][n];
-        for(int row[] : dp) {
-            Arrays.fill(row, Integer.MAX_VALUE);
+    int solve(int[][] matrix, int row, int col) {
+        if (row >= matrix.length || col >= matrix[0].length || col < 0) {
+            return Integer.MAX_VALUE;
         }
-
-        int ans = Integer.MAX_VALUE;
-
-        for(int i = 0; i < matrix.length; i++) {
-            ans = Math.min(ans, isSafe(matrix, 0, i, dp));
+        if (row == matrix.length - 1) {
+            if (col < matrix[0].length && col >= 0)
+                return matrix[row][col];
+            else 
+                return 0;
         }
-
-        return ans;
+        if (dp[row][col] != Integer.MIN_VALUE) {
+            return dp[row][col];
+        }
+        return dp[row][col] = matrix[row][col] + Math.min(solve(matrix,row + 1, col), 
+        Math.min(solve(matrix, row + 1, col - 1), solve(matrix, row + 1, col + 1)));
     }
 
-    public int isSafe(int A[][], int row, int col, int dp[][]) {
-
-        int m = A.length;
-        int n = A[0].length;
-
-        if(dp[row][col] != Integer.MAX_VALUE) return dp[row][col];
-
-        if(row == m - 1) 
-            return dp[row][col] = A[row][col];
-        
-        int left = Integer.MAX_VALUE, right = Integer.MAX_VALUE;
-
-        if(col > 0) 
-            left = isSafe(A, row + 1, col - 1, dp);
-
-        int straight = isSafe(A, row + 1, col, dp);
-
-        if(col < n - 1) 
-            right = isSafe(A, row + 1, col + 1, dp);
-        
-        dp[row][col] = Math.min(left, Math.min(straight, right)) + A[row][col];
-
-        return dp[row][col];
+    public int minFallingPathSum(int[][] matrix) {
+        dp = new int[matrix.length][matrix[0].length];
+        for (int [] a : dp) {
+            Arrays.fill(a, Integer.MIN_VALUE);
+        }
+        int min_value = Integer.MAX_VALUE;
+        for (int i = 0; i < matrix.length; ++i) {
+            min_value = Math.min(min_value, solve(matrix, 0, i));
+        }
+        return min_value;
     }
 }

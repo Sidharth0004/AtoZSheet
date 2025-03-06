@@ -5,35 +5,46 @@ import java.util.Arrays;
 public class CountSubset {
     
 
-    static int findWaysUtil(int ind, int target, int[] arr, int[][] dp) {
-        if (target == 0)
+   
+
+class Solution {
+    // Function to calculate the number of subsets with a given sum
+    public static int helper(int ind , int target , int [] num , int [][] dp){
+        // if(target ==0){
+        //     return 1;
+        // }
+        
+           if(ind == 0){
+        if(target==0 && num[0]==0)
+            return 2;
+        if(target==0 || target == num[0])
             return 1;
-
-        if (ind == 0)
-            return arr[0] == target ? 1 : 0;
-
+        return 0;
+    }
         if (dp[ind][target] != -1)
             return dp[ind][target];
 
-        int notTaken = findWaysUtil(ind - 1, target, arr, dp);
-
-        int taken = 0;
-        if (arr[ind] <= target)
-            taken = findWaysUtil(ind - 1, target - arr[ind], arr, dp);
-
+   int notTaken = helper(ind-1 , target , num , dp);
+    int taken = 0;
+   if(num[ind]<= target){
+      taken=  helper(ind-1 , target-num[ind] , num , dp);
       
-        return dp[ind][target] = notTaken + taken;
+   }
+   
+  return dp[ind][target] = notTaken + taken;
+        
     }
-
-    public static int perfectSum(int num[],int n, int k) 
-    { 
-       
-        int dp[][] = new int[n][k + 1];
-
-        for (int row[] : dp)
-            Arrays.fill(row, -1);
-
-        return findWaysUtil(n - 1, k, num, dp);
-
-    } 
+    public int perfectSum(int[] nums, int target) {
+        // code here
+        int n = nums.length;
+        int [][] dp = new int [n][target+1];
+        for(int [] row : dp){
+            Arrays.fill(row,-1);
+            
+        }
+        
+     return helper(n-1 , target , nums ,dp);   
+        
+    }
+}
 }

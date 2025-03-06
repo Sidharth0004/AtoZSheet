@@ -48,32 +48,27 @@ public class HouseRobber1 {
     }
 }
 
- public static int helper(int m , int n , int [][] dp){
-        if(m==0 && n==0){
-            return 1;
+ //! Tabulation
+ public static int helper(int [] nums , int n, int [] dp ){
+ 
+  dp[0] = nums[0];
+
+  for(int i = 1 ; i< n ; i++){
+        int pick = nums[i];
+        if(i>1){
+      pick  += dp[i-2] ;
         }
-    if(m<0 || n<0){
-        return 0;
-    }
+     int nonPick = dp[i-1];
 
-      if(dp[m][n] != -1){
-        return dp[m][n];
-    }
+     dp[i] = Math.max(pick, nonPick);
+  }
+return dp[n-1];
 
-      int up = helper(m - 1, n, dp);
-        int left = helper(m, n - 1, dp);
-
-        return dp[m][n] = up+left;
-
-
-
-    }
-
-    public int uniquePaths(int m, int n) {
-      int dp[][] = new int[m][n];
-
-      for (int[] row : dp)
-            Arrays.fill(row, -1);
-
-            helper(m-1 , n-1, dp);  
-    }
+ }
+ public int rob(int[] nums) {
+     int n= nums.length;
+     int dp [] = new int[n];
+        Arrays.fill(dp, -1);
+     int ans = helper(nums , n ,dp);
+     return ans;
+ }

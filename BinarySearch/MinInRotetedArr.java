@@ -3,22 +3,33 @@ package BinarySearch;
 // 3,4,5,1,2]
 
 public class MinInRotetedArr {
-    
 
-    class Solution {
-        public int findMin(int[] nums) {
-            int l=0;
-             int r=nums.length-1;
-             while(l<r){
-                  int mid = (r+l)/2;
-                 if(nums[mid]>nums[r]){
-                      l= mid+1;
-                     
-                 }
-                  else{
-                      r= mid;
-                  }
-             }
-             return nums[r];
-        } }
+    public int findMin(int[] nums) {
+
+        int n = nums.length;
+        int low  = 0 ;
+        int high = n-1;
+        int ans = Integer.MAX_VALUE;
+    
+    
+        while(low<=high){
+            int mid = (low+high)/2;
+            
+            if(nums[low]<= nums[mid]){
+                ans = Math.min(ans , nums[low]);
+                low = mid+1;
+    
+            }
+            else{
+                ans = Math.min(ans , nums[mid]);
+                 high = mid-1;
+               
+            }
+    
+    
+        } 
+    
+    return ans;
+    
+        }
 }
