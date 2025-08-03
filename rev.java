@@ -1,29 +1,30 @@
+import java.util.ArrayList;
+
 public class rev {
-    
 
-    public static void main(String[] args) {
-        int nums [] = {1,2,3,1};
-        int n = nums.length;
-        int num1[] = new int[n-1] ;
-        int num2[] = new int[n-1];
+     public int minOperations(int[][] grid, int x) {
+        ArrayList<Integer> arr = new ArrayList<>();
+     int rem = grid[0][0] % x;
+     for(int i = 0 ; i< grid.length ; i++){
+        for(int j = 0 ; j< grid[i].length ; j++){
+          if(grid[i][j]%x != rem ){
+            return -1;
+          }
+          arr.add(grid[i][j]);
 
-        for(int i = 0 ; i<n-1; i++){
-            num1[i]= nums[i];
         }
-   
-    
-          int k =0;
-           for(int i = 1; i<n ; i++){
-            num2[k]= nums[i];
-            k++;
-        }
+     }
+ java.util.Collections.sort(arr);
+ int n = arr.size();
+ int mid = n/2;
 
-        for (int i = 0; i < num1.length; i++) {
-            System.out.print( num1[i] + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < num2.length; i++) {
-            System.out.print( num2[i] + " ");
-        }
+ int step = 0 ;
+ for(int i = 0 ;i<n ; i++){
+    step += Math.abs(arr.get(i)-arr.get(mid))/x;
+ }
+
+return step;
     }
 }
+
+

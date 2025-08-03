@@ -3,7 +3,11 @@
 /**
  * NextSmaller
  */
-public class NearestSmaller {
+
+
+
+ 
+// public class NearestSmaller {
 
    
 //    public int[] finalPrices(int[] prices) {
@@ -20,7 +24,7 @@ public class NearestSmaller {
 
 //       return prices;
 //   }
-}
+// }
                 //! or
             //     public int[] finalPrices(int[] prices) {
         
